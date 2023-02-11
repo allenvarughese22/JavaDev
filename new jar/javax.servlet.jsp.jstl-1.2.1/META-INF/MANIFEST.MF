@@ -1,0 +1,92 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven Bundle Plugin
+Built-By: java_re
+Build-Jdk: 1.6.0_11
+Extension-Name: javax.servlet.jsp.jstl
+Implementation-Vendor: Oracle Corporation
+Implementation-Version: 1.2.1
+Specification-Vendor: Oracle Corporation
+Specification-Version: 1.2
+Export-Package: org.apache.taglibs.standard,org.apache.taglibs.standar
+ d.extra.spath;uses:="org.xml.sax,org.xml.sax.helpers,javax.servlet.js
+ p.tagext,javax.servlet.jsp",org.apache.taglibs.standard.functions;use
+ s:="org.apache.taglibs.standard.tag.common.core,org.apache.taglibs.st
+ andard.resources,javax.servlet.jsp",org.apache.taglibs.standard.lang.
+ jstl;uses:="org.apache.taglibs.standard.lang.jstl.parser,org.apache.t
+ aglibs.standard.lang.support,javax.servlet.jsp.tagext,javax.servlet.j
+ sp,javax.servlet.http,javax.servlet",org.apache.taglibs.standard.lang
+ .jstl.parser;uses:="org.apache.taglibs.standard.lang.jstl",org.apache
+ .taglibs.standard.lang.jstl.test;uses:="org.apache.taglibs.standard.l
+ ang.jstl.test.beans,org.apache.taglibs.standard.lang.jstl,javax.servl
+ et.jsp.tagext,javax.servlet.jsp,javax.servlet,javax.el,javax.servlet.
+ jsp.el,javax.servlet.http",org.apache.taglibs.standard.lang.jstl.test
+ .beans,org.apache.taglibs.standard.lang.support;uses:="javax.servlet.
+ jsp.tagext,javax.servlet.jsp,org.apache.taglibs.standard.lang.jstl",o
+ rg.apache.taglibs.standard.resources,org.apache.taglibs.standard.tag.
+ common.core;uses:="javax.servlet.jsp.tagext,javax.servlet.jsp,org.apa
+ che.taglibs.standard.resources,javax.el,javax.servlet.jsp.jstl.core,j
+ avax.servlet,javax.servlet.http",org.apache.taglibs.standard.tag.comm
+ on.fmt;uses:="org.apache.taglibs.standard.tag.common.core,javax.servl
+ et,javax.servlet.jsp.jstl.fmt,javax.servlet.jsp.jstl.core,javax.servl
+ et.jsp.tagext,javax.servlet.jsp,javax.servlet.http,org.apache.taglibs
+ .standard.resources",org.apache.taglibs.standard.tag.common.sql;uses:
+ ="javax.naming,javax.sql,javax.servlet.jsp.jstl.core,org.apache.tagli
+ bs.standard.resources,javax.servlet.jsp,javax.servlet.jsp.tagext,java
+ x.servlet.jsp.jstl.sql,javax.servlet,org.apache.taglibs.standard.tag.
+ common.core",org.apache.taglibs.standard.tag.common.xml;uses:="org.ap
+ ache.taglibs.standard.tag.common.core,javax.servlet.jsp.tagext,org.w3
+ c.dom,javax.servlet.jsp,javax.servlet.jsp.jstl.core,org.apache.taglib
+ s.standard.resources,javax.xml.namespace,javax.xml.xpath,com.sun.org.
+ apache.xpath.internal.jaxp,com.sun.org.apache.xalan.internal.res,java
+ x.xml.parsers,org.w3c.dom.traversal,org.xml.sax,com.sun.org.apache.xp
+ ath.internal.objects,javax.xml.transform,com.sun.org.apache.xml.inter
+ nal.utils,com.sun.org.apache.xpath.internal,javax.servlet,javax.servl
+ et.http,javax.xml.transform.dom,javax.xml.transform.sax,org.xml.sax.h
+ elpers,javax.xml.transform.stream",org.apache.taglibs.standard.tag.el
+ .core;uses:="org.apache.taglibs.standard.lang.support,org.apache.tagl
+ ibs.standard.tag.common.core,javax.servlet.jsp.tagext,javax.servlet.j
+ sp,javax.servlet.jsp.jstl.core",org.apache.taglibs.standard.tag.el.fm
+ t;uses:="org.apache.taglibs.standard.lang.support,javax.servlet.jsp.t
+ agext,org.apache.taglibs.standard.tag.common.fmt,javax.servlet.jsp,ja
+ vax.servlet.jsp.jstl.fmt",org.apache.taglibs.standard.tag.el.sql;uses
+ :="org.apache.taglibs.standard.lang.support,org.apache.taglibs.standa
+ rd.tag.common.sql,javax.servlet.jsp.tagext,javax.servlet.jsp",org.apa
+ che.taglibs.standard.tag.el.xml;uses:="org.apache.taglibs.standard.ta
+ g.common.xml,javax.servlet.jsp.tagext,org.apache.taglibs.standard.tag
+ .el.core,javax.servlet.jsp,org.apache.taglibs.standard.tag.common.cor
+ e,org.xml.sax,javax.xml.transform",org.apache.taglibs.standard.tag.rt
+ .core;uses:="org.apache.taglibs.standard.tag.common.core,javax.servle
+ t.jsp.jstl.core,javax.servlet.jsp.tagext,javax.servlet.jsp",org.apach
+ e.taglibs.standard.tag.rt.fmt;uses:="org.apache.taglibs.standard.tag.
+ common.fmt,javax.servlet.jsp,javax.servlet.jsp.jstl.fmt",org.apache.t
+ aglibs.standard.tag.rt.sql;uses:="org.apache.taglibs.standard.tag.com
+ mon.sql,javax.servlet.jsp",org.apache.taglibs.standard.tag.rt.xml;use
+ s:="org.apache.taglibs.standard.tag.common.xml,javax.servlet.jsp,org.
+ xml.sax,javax.xml.transform",org.apache.taglibs.standard.tei;uses:="j
+ avax.servlet.jsp.tagext",org.apache.taglibs.standard.tlv;uses:="org.a
+ pache.taglibs.standard.lang.support,org.apache.taglibs.standard.resou
+ rces,javax.xml.parsers,javax.servlet.jsp.tagext,org.xml.sax.helpers,j
+ avax.servlet.jsp,org.xml.sax"
+Tool: Bnd-1.15.0
+Bundle-Name: JavaServer Pages (TM) TagLib Implementation
+Bundle-Vendor: GlassFish Community
+Bundle-Version: 1.2.1
+Bnd-LastModified: 1323287185141
+Bundle-ManifestVersion: 2
+Bundle-License: http://glassfish.dev.java.net/nonav/public/CDDL+GPL.html
+Bundle-Description: Java.net - The Source for Java Technology Collabor
+ ation
+Import-Package: com.sun.org.apache.xalan.internal.res,com.sun.org.apac
+ he.xml.internal.utils,com.sun.org.apache.xpath.internal,com.sun.org.a
+ pache.xpath.internal.jaxp,com.sun.org.apache.xpath.internal.objects,j
+ avax.el,javax.naming,javax.servlet,javax.servlet.http,javax.servlet.j
+ sp,javax.servlet.jsp.el,javax.servlet.jsp.jstl.core,javax.servlet.jsp
+ .jstl.fmt,javax.servlet.jsp.jstl.sql,javax.servlet.jsp.tagext,javax.s
+ ql,javax.xml.namespace,javax.xml.parsers,javax.xml.transform,javax.xm
+ l.transform.dom,javax.xml.transform.sax,javax.xml.transform.stream,ja
+ vax.xml.xpath,org.w3c.dom,org.w3c.dom.traversal,org.xml.sax,org.xml.s
+ ax.helpers
+Bundle-SymbolicName: org.glassfish.web.javax.servlet.jsp.jstl
+Bundle-DocURL: http://glassfish.org
+

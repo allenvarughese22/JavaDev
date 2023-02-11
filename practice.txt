@@ -1,0 +1,4 @@
+1)send to a servlet .. se orginal client info and print using 1 servlet
+
+2 )(total 2 servlets
+send to 1st servlet .. some logic... send to next servlet.. use orginal client info and print

@@ -1,0 +1,247 @@
+package com.xadmin.usermanagement.dao;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.mysql.cj.protocol.Resultset;
+import com.xadmin.usermanagement.bean.User;
+
+public class UserDao
+{
+	private String driver = "com.mysql.cj.jdbc.Driver";
+	private String jdbc_url = "jdbc:mysql://localhost//userdb?useSSL=false";
+//	String jdbc_url="jdbc:mysql://localhost/aa";
+
+	private String user = "root";
+	private String pwd = "root";
+
+	private static final String INSERT_USER_SQL = "INSERT INTO users" + "(name, email, country) VALUES" + "(?, ?, ?);";
+
+	private static final String SELECT_USER_BY_ID = "SELECT id, name, email, country from users  where id=?";
+	private static final String SELECT_ALL_USERS = "SELECT * from users";
+	private static final String DELETE_USER_SQL = "delete from users where id=?";
+	private static final String UPDATE_USER_SQL = "update users set name=?, email=?  country=? where id=?";
+
+	public UserDao()
+	{
+
+	}
+
+	protected Connection getConnection()
+	{
+
+		Connection connection = null;
+
+		try
+		{
+			Class.forName("driver");
+			connection = DriverManager.getConnection(jdbc_url, user, pwd);
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+		} catch (ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		return connection;
+
+	}
+
+	// insert user
+	public void insertUser(User user) throws SQLException
+	{
+		System.out.println(INSERT_USER_SQL);
+		try
+
+		(Connection connection = getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USER_SQL))
+		{
+			preparedStatement.setString(1, user.getName());
+			preparedStatement.setString(2, user.getEmail());
+			preparedStatement.setString(3, user.getCountry());
+			System.out.println(preparedStatement);
+			preparedStatement.executeUpdate();
+		}
+
+		catch (SQLException e)
+		{
+			printsqlException(e);
+		}
+
+	}
+
+	// select user by id
+
+	public User selectUser(int id) throws SQLException
+	{
+		User user = null;
+		try (Connection connection = getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID);)
+		{
+			preparedStatement.setInt(1, id);
+			System.out.println(preparedStatement);
+			ResultSet rs = preparedStatement.executeQuery();
+
+			while (rs.next())
+			{
+				String name = rs.getString("name");
+				String email = rs.getString("email");
+				String country = rs.getString("country");
+				user = new User(id, name, email, country);
+
+			}
+
+		} catch (SQLException e)
+		{
+			printsqlException(e);
+		}
+		return user;
+	}
+
+	
+	
+	
+	//
+	public List<User> selectAllUsers() {
+
+		// using try-with-resources to avoid closing resources (boiler plate code)
+		List<User> users = new ArrayList<>();
+		// Step 1: Establishing a Connection
+		try (Connection connection = getConnection();
+
+				// Step 2:Create a statement using connection object
+			PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_USERS);) {
+			System.out.println(preparedStatement);
+			// Step 3: Execute the query or update query
+			ResultSet rs = preparedStatement.executeQuery();
+
+			// Step 4: Process the ResultSet object.
+			while (rs.next()) {
+				int id = rs.getInt("id");
+				String name = rs.getString("name");
+				String email = rs.getString("email");
+				String country = rs.getString("country");
+				users.add(new User(id, name, email, country));
+			}
+		} catch (SQLException e) {
+			printsqlException(e);;
+		}
+		return users;
+	}
+
+	// select all user
+//	public List<User> selectAllUsers()
+//	{
+//		List<User> users = new ArrayList<>();
+//
+//		try (Connection connection = getConnection();
+//				PreparedStatement preStatement = connection.prepareStatement(SELECT_ALL_USERS);)
+//		{
+//			System.out.println(preStatement);
+//
+//			ResultSet rs = preStatement.executeQuery();
+//			while (rs.next())
+//			{
+//				int id = rs.getInt("id");
+//				String name = rs.getString("name");
+//				String email = rs.getString("email");
+//				String country = rs.getString("country");
+//				users.add(new User(id, name, email, country));
+//			}
+//		}
+//
+//		catch (SQLException e)
+//		{
+//			printsqlException(e);
+//		}
+//
+//		return users;
+//	}
+
+	// update user
+	public boolean updateUser(User user) throws SQLException
+	{
+		boolean rowUpdated;
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(UPDATE_USER_SQL);)
+		{
+			System.out.println("updated user: " + statement);
+			statement.setString(1, user.getName());
+			statement.setString(2, user.getEmail());
+			statement.setString(3, user.getCountry());
+			statement.setInt(4, user.getId());
+
+			rowUpdated = statement.executeUpdate() > 0;
+
+		}
+		return rowUpdated;
+	}
+
+	// delete user
+	public boolean deleteUser(int id) throws SQLException
+	{
+		boolean rowDeleted;
+		try (Connection connection = getConnection();
+				PreparedStatement statement = connection.prepareStatement(DELETE_USER_SQL);)
+		{
+			statement.setInt(1, id);
+			rowDeleted = statement.executeUpdate() > 0;
+		}
+		return rowDeleted;
+		
+
+	}
+
+	//
+	/**
+	 * @param e
+	 */
+
+	// exception
+	private void printsqlException(SQLException ex)
+	{
+		for (Throwable e : ex)
+		{
+			if (e instanceof SQLException)
+			{
+				e.printStackTrace(System.err);
+				System.err.println("SQLstate:" + ((SQLException) e).getSQLState());
+				System.err.println("Error code:" + ((SQLException) e).getErrorCode());
+				System.err.println("Message:" + e.getMessage());
+
+				Throwable t = ex.getCause();
+				while (t != null)
+				{
+					System.out.println("Cause:" + t);
+					t = t.getCause();
+				}
+
+			}
+		}
+
+	}
+
+}
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+
+
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/Error.jsp</location>
+	</error-page>
+
+
+</web-app>
+
+
+ 
+

@@ -1,0 +1,29 @@
+html-> get
+dopost->
+doget->-> code
+works
+
+
+html-> get
+dopost->code
+doget->-> code
+not works
+
+
+
+html-> post
+dopost->
+doget->code
+
+not working
+
+
+html-> post
+dopost->code
+doget->
+working
+
+
+html-> post /get
+service works for both
+
