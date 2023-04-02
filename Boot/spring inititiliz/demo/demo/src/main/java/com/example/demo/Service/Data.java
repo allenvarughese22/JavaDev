@@ -7,14 +7,6 @@ import org.apache.commons.csv.CSVRecord;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.io.StringReader;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class Data {
@@ -28,6 +20,7 @@ public class Data {
     @PostConstruct
     @Scheduled (cron = "* * 1 * * *")
     public    void h() throws IOException, InterruptedException {
+        System.out.println("haanmmmmmmmmmmmmmmmmmmma");
          List<LocationStats>  newStats=  new ArrayList<>();
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder(URI.create(URL)).build();
